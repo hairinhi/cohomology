@@ -1,0 +1,237 @@
+\documentclass[titlepage,12pt]{article}
+\usepackage{amsmath,amsthm,amssymb,ascmac,amscd}
+\usepackage[dvipdfmx]{graphicx}
+\newtheorem{defi}{Definition}[section]
+\newtheorem{ex}{Example}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{rem}{Remark}[section]
+\newtheorem{prop}{Proposition}[section]
+\newcommand{\mm}{\mathfrak{m}}
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\m}{\mathcal{V}_{n}}
+\newcommand{\w}{\wedge}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\renewcommand{\proofname}{\textbf{Proof}}
+\begin{document}
+
+\begin{defi}
+Let $\mathfrak{g}$ be a Lie algebra on a field $K$ and $V$ be an n-dimensional vector space over $K$. And, Let $\phi :
+\mathfrak{g} \times V \longrightarrow V$ be a $K$-bilinear map. Hereinafter, we write
+$\phi(x,v)=x \cdot v(\forall x \in \g, \forall v \in V)$. Then, ($V,\phi$) is $\g$-module such that
+\begin{equation*}
+\phi([x,y],v) = [x,y] \cdot v = x \cdot (y \cdot v)-y \cdot (x
+\cdot v) \quad \forall x,y \in \g, \forall v \in V.
+\end{equation*}
+\end{defi}
+
+\begin{defi}
+Let $\mathfrak{g}$ be a Lie algebra and $V$ be a $\mathfrak{g}$-module. Then, 
+a $p$-dimensional \textbf{cochain} of $\mathfrak{g}$ with values in $V$ is a $p$-linear alternating mapping from 
+$\underbrace{\mathfrak{g} \times \mathfrak{g} \times \cdots
+\times \mathfrak{g}}_{p}$ to $V$. \\
+\ However, if $p$ is $0$, $0$-cochain of $\mathfrak{g}$ is a constant mapping from $\mathfrak{g}$ to $V$.
+\end{defi}
+
+\ Hereinafter, let $\g,V$ be finite dimension and $C^{p}(\mathfrak{g},V)$ be a $p$-cochain space of $\mathfrak{g}$. That is,
+\begin{alignat*}{2}
+C^{p}(\g,V) &\cong \operatorname{Hom}(\Lambda^{p}\g,V), \quad
+\phi \mapsto e_{i_{1}} \wedge \dots \wedge e_{i_{p}} \mapsto
+\phi(e_{i_{1}},\dots,e_{i_{p}}) & \qquad & (p \geqq 1) \\
+C^{0}(\g,V) &= V & \qquad & (p = 0) \\
+C^{p}(\g,V) &= {0} & \qquad & (p<0)
+\end{alignat*}
+($e_{1},\dots,e_{n}$ are basis of $\g$, $1 \leqq i_{1} < \dots < i_{p} \leqq n$). Also,
+let $C^{*}(\g,V)$ be a direct sum of all $C^{p}(\g,V)$. Then, we will define $\theta(x)$,
+$i(y)$ as follows. Firstly, we will confirm that for $x,x_{1},\dots,x_{p}$ in $\g$ and $\Phi$ in $C^{p}(\g,V)$,
+\begin{equation*}
+(x \cdot \Phi)(x_{1},\dots,x_{p})=x \cdot
+\Phi(x_{1},\dots,x_{p}) - \sum_{1\leqq i \leqq p} \Phi
+(x_{1},\dots,x_{i-1},[x,x_{i}],\dots,x_{p}) \tag{$\ast$}
+\end{equation*}
+defines a $\g$-module structure in $C^{p}(\g,V)$. In fact,
+\begin{align*}
+&(x \cdot(y \cdot \Phi))(x_{1},\dots,x_{p})-(y \cdot (x \cdot
+\Phi))(x_{1},\dots,x_{p}) \\
+&= x \cdot ((y \cdot \Phi)(x_{1},\dots,x_{p})) - \sum_{i}(y
+\cdot \Phi)(x_{1},\dots,[x,x_{i}],\dots,x_{p}) \\
+& -y \cdot((x \cdot \Phi)(x_{1},\dots,x_{p}))+\sum_{i}(x \cdot
+\Phi)(x_{1},\dots,[y,x_{i}],\dots,x_{p}) \\
+&=x \cdot \{y \cdot
+(\Phi(x_{1},\dots,x_{p}))-\sum_{j}\Phi(x_{1},\dots,[y,x_{j}],\dots,x_{p})\}
+\\
+& -\sum_{i}\{y \cdot (\Phi(x_{1},\cdots,[x,x_{i}],\dots,x_{p}) -
+\sum_{j \neq
+i}\Phi(x_{1},\dots,[y,x_{j}],\dots,[x,x_{i}],\dots,x_{p}) \\
+&　-\Phi(x_{1},\dots,[y,[x,x_{i}]],\dots,x_{p})\} \\
+& -y \cdot \{x \cdot (\Phi(x_{1},\dots,x_{p})) -
+\sum_{j}\Phi(x_{1},\dots,[x,y_{j}],\dots,x_{p}\} \\
+& -\sum_{i}\{x \cdot
+\{\Phi(x,\cdots,[y,x_{i}],\dots,x_{p})-\sum_{i \neq
+j}\Phi(x_{1},\dots,[x,x_{j}],\dots,[y,x_{j}],\dots,x_{p}) \\
+&　-\Phi(x_{1},\dots,[x,[y,x_{j}]],\dots,x_{p})\} \\
+&= [x,y] \cdot
+(\Phi(x_{1},\dots,x_{p}))-\sum_{i}\Phi(x_{1},\dots,[x,y],x_{i}],\dots,x_{p})
+\\
+&=([x,y] \cdot \Phi)(x_{1},\dots,x_{p}).
+\end{align*}
+
+We write $\theta$ as a representation corresponding to this $(\ast)$. Also, for $y$ in $\g$,
+we define $i(y)$ as a homomorphism from $C^{p}$ to $C^{p-1}$ such as the following.
+\begin{equation*}
+(i(y)\Phi)(x_{1},\dots,x_{p-1}) = \Phi(y,x_{1},\dots,x_{p-1}).
+\end{equation*}
+\begin{lem}
+For $x,y$ in $\g$,
+\begin{equation*}
+\theta(x) \circ i(y) - i(y) \circ \theta(x) = i([x,y]) .
+\end{equation*}
+\end{lem}
+
+\begin{proof}
+Substituting $\Phi$,
+\begin{align*}
+(Left side) &= ((\theta(x) \circ i(y))\Phi - (i(y) \circ
+\theta(x))\Phi)(x_{1},\dots,x_{p-1}) \\
+&= (\theta(x)(i(y)\Phi))(x_{1},\dots,x_{p-1}) -
+(i(y)(\theta(x)\Phi))(x_{1},\dots,x_{p-1}) \\
+		&= x(i(y)\Phi)(x_{1},\dots,x_{p-1}) \\ 
+& - \sum_{1 \leqq i \leqq
+p-1}(i(y)\Phi)(x_{1},\dots,x_{i-1},[x,x_{i}],\dots,x_{p-1}) -
+(\theta(x)\Phi)(y,x_{1},\dots,x_{p-1}) \\
+&= x\Phi(y,x_{1},\dots,x_{p-1}) - \sum_{1 \leqq i \leqq
+p-1}\Phi(y,x_{1},\dots,x_{i-1},[x,x_{i}],\dots,x_{p-1}) \\
+& - \bigl\{ x\Phi(y,x_{1},\dots,x_{p-1}) -
+\Phi([x,y],x_{1},\dots,x_{p-1}) \\ & - \sum_{1 \leqq i \leqq
+p-1}\Phi(y,x_{1},\dots,x_{i-1},[x,x_{i}],\dots,x_{p})\bigr\} \\
+		&=\Phi([x,y],x_{1},\dots,x_{p-1}) \\
+		&=(i([x,y])\Phi)(x_{1},\dots,x_{p-1}) = (Right side).
+\end{align*}
+\end{proof}
+
+\begin{defi}
+Let $\g$ be a Lie algebra and $V$ be $\g$-module. Then, we define endomorphism $d$ as 
+\begin{align*}
+d &: C^{*}(\g,V) \longrightarrow C^{*}(\g,V) \\
+d\Phi(x) &= x \cdot \Phi \quad \operatorname{for} \quad \forall \Phi
+\in C^{0}(\g,V), \ \forall x \in \g \\
+d\Phi(x_{1},\dots,x_{p+1}) &= \sum_{1 \leqq s \leqq
+p+1}(-1)^{s+1} x_{s} \cdot
+(\Phi(x_{1},\dots,\hat{x}_{s},\dots,x_{p+1})) \\
+& + \sum_{1 \leqq s < t \leqq
+p+1}(-1)^{s+t}\Phi([x_{s},x_{t}],x_{1},\dots,\hat{x}_{s},\dots,\hat{x}_{t},\dots,x_{p+1})
+\\
+& \operatorname{for} \quad \forall \Phi \in C^{p}(\g,V)(p \geqq 1), \,
+\forall x_{1},\dots,x_{p+1} \in \g.
+\end{align*}
+$d$ maps an element of $C^{p}(\mathfrak{g},V)$ to $C^{p+1}(\mathfrak{g},V)$. This $d$ is called \textbf{coboundary operator}.
+\end{defi}
+
+\begin{thm}
+$d$ satisfies $d^{2}=0$.
+\end{thm}
+Fistly, we will prove this lemma.
+\begin{lem} 
+\begin{align*}
+&\operatorname{(i)} \quad \theta(x) = i(x) \circ d + d \circ
+i(x) \\
+&\operatorname{(ii)} \quad d \circ \theta(x) = \theta(x) \circ d
+\quad \operatorname{for} \quad \forall x \in \g.
+\end{align*}
+\end{lem}
+
+\begin{proof}
+About $\operatorname{(i)}$, \\
+\ For $x,x_{1},\dots,x_{p}$ in $\g$,
+\begin{align*}
+((i(x) \circ d)(\Phi))(x_{1},\dots,x_{p}) &=
+(i(x)(d\Phi))(x_{1},\dots,x_{p}) \\ &=
+d\Phi(x,x_{1},\dots,x_{p}) \\
+&= x \cdot (\Phi(x_{1},\dots,x_{p})) - \sum_{1 \leqq s \leqq
+p}(-1)^{s+1}\theta(x_{s})\Phi((x,x_{1},\dots,\hat{x}_{s},\dots,x_{p}))\\
+& + \sum_{1 \leqq s \leqq
+p}(-1)^{s+1}\Phi([x,x_{s}],x_{1},\dots,\hat{x}_{s},\dots,x_{p})
+\\
+& + \sum_{1 \leqq s<t \leqq
+p}(-1)^{s+t}\Phi([x_{s},x_{t}],x,x_{1},\dots,\hat{x}_{s},\dots,\hat{x}_{t},\dots,x_{p})
+\\
+	&= x \cdot (\Phi(x_{1},\dots,x_{p})) \\
+& - \Bigl\{ \sum_{1 \leqq s \leqq
+p}(-1)^{s+1}\Bigl(i(x)(\theta(x_{s})\Phi)-i([x,x_{s}])\Phi\Bigr)(x_{1},\dots,\hat{x}_{s},\dots,x_{p})
+\\
+& +\sum_{1 \leqq s<t \leqq p
+}(-1)^{s+t}(i(x)\Phi)([x_{s},x_{t}],x_{1},\dots,\hat{x}_{s},\dots,x_{p})
+\Bigr\} \\
+&= (\theta(x)-d \circ i(x))(\Phi(x_{1},\dots,x_{p})).
+\end{align*}
+About $\operatorname{(ii)}$, let $\Phi$ be a 0-cohchain. Then,
+\begin{align*}
+(\theta(x) \circ d\Phi)(y)
+	&= x(y\Phi)-[x,y]\Phi \\
+	&= x(y\Phi)-{x(y\Phi)-y(x\Phi)} 
+	= y(x\Phi) = (d\theta(x)\Phi)(y) \\
+	&\therefore \  \theta(x)d\Phi=d\theta(x)\Phi
+\end{align*}
+Now, we assume that this relationship holds up to $p-1$. That is, for $\Phi$ in $C^{p-1}(\g,V)$,
+$d(\theta(x)\Phi) = \theta(x)d\Phi$.
+Assuming that $\Phi$ is an element of $C^{p}(\g,V)$,
+\begin{align*}
+(i(y)(d\theta(x)-\theta(x)d))\Phi &= (i(y)(d\theta(x))\Phi -
+i(y)\theta(x)d\Phi \\
+&= (\theta(y)-di(y))\theta(x)\Phi +
+(i([x,y])-\theta(x)i(y))d\Phi \\
+&= \theta(y)\theta(x)\Phi - di(y)\theta(x)\Phi + i([x,y])d\Phi -
+\theta(x)i(y)d\Phi \\
+&= \theta(y)\theta(x)\Phi + d(i([x,y])-\theta(x)i(y))\Phi \\
+& + \bigl\{\theta([x,y])-di([x,y])\bigr\}\Phi -
+\bigl\{\theta(x)(\theta(y)-di(y))\bigr\}\Phi \\
+&= (\theta(x)d-d\theta(x))(i(y)\Phi) = 0 \\
+&\therefore \ (d\theta(x)-\theta(x)d)\Phi = 0.
+\end{align*}
+\end{proof}
+then, we will prove theorem 0.1.
+\begin{proof}
+We prove by induction on $p$. Firstly, for $\Phi \in C^{0}(\g,V), \forall x,y \in \g$,
+\begin{align*}
+((d \circ d)(\Phi))(x,y) &= x \cdot (d\Phi(y))-y \cdot
+(d\Phi(x)) - d\Phi([x,y]) \\
+&=0.
+\end{align*}
+Secondary, we suppose that the above equation holds up to $p-1$. Then, for $\Phi \in C^{p}(\g,V),
+x_{1},\dots,x_{p+2} \in \g$,
+\begin{align*}
+((d \circ d)(\Phi))(x_{1},\dots,x_{p+2}) &=(i(x_{1}) \circ d
+\circ d)(\Phi)(x_{2},\dots,x_{p+2}) \\
+&= ((\theta(x_{1})-d \circ i(x_{1})) \circ
+d)(\Phi)(x_{2},\dots,x_{p+2}) \\
+&=(\theta(x_{1}) \circ d - d \circ (\theta(x_{1}) - d \circ i
+(x_{1})))(\Phi)(x_{2},\dots,x_{p+2}) \\
+&=((d \circ d \circ i(x_{1})(\Phi)(x_{2},\dots,x_{p+2}) \\
+&= (d \circ d)(i(x_{1})(\Phi))(x_{2},\dots,x_{p+2})
+\end{align*}
+Therefore, $d^{2}=0$.
+\end{proof}
+
+
+\begin{thebibliography}{99}
+\item
+L. Boza, E. M. Fedriani, J. N\'{u}\~{n}ez, and \'{A}. F. Tenorio. \textit{A Historical Review of the Classifications of Lie Algebra}. Rev. Un. Mat. Argentina, \textbf{54}, No 2, 2013.
+\item
+K. Erdmann and Mark J .Wildon. \textit{Introduction to Lie Algebras}. Springer, 2006.
+\item
+D. B. Fucks. \textit{Cohomology of Infinite Dimensional Lie Algebras}. Plenum Publishing Corporation, 1986.
+\item
+M. Goze and Y. Khakimdjanov. \textit{Nilpotent Lie Algebra}. Springer Science+Business Media, B.V., Volume 361, 1996.
+\item
+P. Griffiths and J. Harris. \textit{Principles of Algebraic Geometry}. John Wiley ＆ Sons, 1978.
+\item
+J. McCleary. \textit{A User's Guide to Spectral Sequences}, 2ED. Cambridge University Press, 2001.
+\item
+D. V. Millionshchikov. \textit{Deformations of Filiform Lie Algebras and Symplectic Structures}. Proceedings of the Steklov Institute of Mathematics, \textbf{252}, 182-204, 2006.
+\item
+M. Vergne. \textit{Cohomologie des alg\`{e}bres de Lie nilpotents}. Bull. Soc. Math. France \textbf{98}, 81-116, 1970.
+\end{thebibliography}
+
+
+\end{document}
